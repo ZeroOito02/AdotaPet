@@ -1,0 +1,98 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Heart, MapPin, Calendar } from "lucide-react";
+
+interface AnimalCardProps {
+  id: string;
+  name: string;
+  species: string;
+  breed: string;
+  age: string;
+  location: string;
+  imageUrl: string;
+  description: string;
+  gender: string;
+  size: string;
+}
+
+const AnimalCard = ({ 
+  name, 
+  species, 
+  breed, 
+  age, 
+  location, 
+  imageUrl, 
+  description, 
+  gender, 
+  size 
+}: AnimalCardProps) => {
+  return (
+    <Card className="group overflow-hidden shadow-card hover:shadow-hero transition-all duration-300 hover:-translate-y-2 bg-card border-border">
+      <div className="relative overflow-hidden">
+        <img 
+          src={imageUrl} 
+          alt={`${name} - ${species} para adoção`}
+          className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div className="absolute top-4 left-4">
+          <Badge variant="secondary" className="bg-secondary-soft text-secondary-foreground">
+            {species}
+          </Badge>
+        </div>
+        <div className="absolute top-4 right-4">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="bg-background/80 hover:bg-background text-foreground p-2 rounded-full backdrop-blur-sm"
+          >
+            <Heart className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+      
+      <CardContent className="p-6">
+        <div className="flex items-start justify-between mb-3">
+          <div>
+            <h3 className="text-xl font-bold text-foreground mb-1">{name}</h3>
+            <p className="text-muted-foreground text-sm">
+              {breed} • {gender} • {size}
+            </p>
+          </div>
+        </div>
+        
+        <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
+          <div className="flex items-center gap-1">
+            <Calendar className="h-4 w-4" />
+            <span>{age}</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <MapPin className="h-4 w-4" />
+            <span>{location}</span>
+          </div>
+        </div>
+        
+        <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
+          {description}
+        </p>
+      </CardContent>
+      
+      <CardFooter className="p-6 pt-0 flex gap-3">
+        <Button 
+          variant="outline" 
+          className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-bounce"
+        >
+          Ver Perfil
+        </Button>
+        <Button 
+          className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground transition-bounce"
+        >
+          <Heart className="h-4 w-4 mr-2" />
+          Adotar
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+};
+
+export default AnimalCard;
