@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Heart, Search } from "lucide-react";
 import heroImage from "@/assets/hero-pets.jpg";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative min-h-[600px] bg-gradient-hero flex items-center overflow-hidden">
       <div className="absolute inset-0">
@@ -35,6 +38,7 @@ const HeroSection = () => {
             <Button 
               size="lg" 
               className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-hero transition-bounce"
+              onClick={() => navigate("/animals")}
             >
               <Heart className="h-5 w-5 mr-2" />
               Ver Animais Disponíveis
@@ -43,6 +47,7 @@ const HeroSection = () => {
               variant="outline" 
               size="lg"
               className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-bounce"
+              onClick={() => navigate("/animals")}
             >
               <Search className="h-5 w-5 mr-2" />
               Buscar por Região

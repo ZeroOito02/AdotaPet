@@ -1,35 +1,30 @@
+import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Heart, MapPin, Calendar, Award, Users, Phone, Mail, ArrowLeft } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import dog1 from "@/assets/dog1.jpg";
+import { getAnimalById } from "@/data/mockAnimals";
 
 const AnimalProfile = () => {
-  // Mock data - in a real app this would come from route params and API
-  const animal = {
-    id: "1",
-    name: "Buddy",
-    species: "Cão",
-    breed: "Golden Retriever",
-    age: "2 anos",
-    location: "São Paulo, SP",
-    imageUrl: dog1,
-    description: "Buddy é um cãozinho super carinhoso e brincalhão. Adora crianças e outros animais. Está procurando uma família que tenha tempo para brincar e dar muito amor. Ele foi resgatado das ruas quando era filhote e desde então vem sendo cuidado com muito carinho em nosso abrigo.",
-    gender: "Macho",
-    size: "Grande",
-    weight: "30kg",
-    vaccinated: true,
-    neutered: true,
-    microchipped: true,
-    goodWithKids: true,
-    goodWithPets: true,
-    energyLevel: "Alta",
-    shelterName: "Lar dos Bichos",
-    shelterContact: "(11) 9999-9999",
-    shelterEmail: "contato@lardosbichos.org"
-  };
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const animal = getAnimalById(id || "");
+
+  if (!animal) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-foreground mb-4">Animal não encontrado</h1>
+          <Button onClick={() => navigate("/animals")}>
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Voltar para animais
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">

@@ -1,22 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Heart, MapPin, Calendar } from "lucide-react";
+import type { Animal } from "@/data/mockAnimals";
 
-interface AnimalCardProps {
-  id: string;
-  name: string;
-  species: string;
-  breed: string;
-  age: string;
-  location: string;
-  imageUrl: string;
-  description: string;
-  gender: string;
-  size: string;
-}
+interface AnimalCardProps extends Omit<Animal, 'weight' | 'vaccinated' | 'neutered' | 'microchipped' | 'goodWithKids' | 'goodWithPets' | 'energyLevel' | 'shelterName' | 'shelterContact' | 'shelterEmail' | 'history' | 'personality' | 'specialNeeds' | 'dateAdded' | 'featured'> {}
 
 const AnimalCard = ({ 
+  id,
   name, 
   species, 
   breed, 
@@ -27,6 +19,7 @@ const AnimalCard = ({
   gender, 
   size 
 }: AnimalCardProps) => {
+  const navigate = useNavigate();
   return (
     <Card className="group overflow-hidden shadow-card hover:shadow-hero transition-all duration-300 hover:-translate-y-2 bg-card border-border">
       <div className="relative overflow-hidden">
@@ -81,11 +74,13 @@ const AnimalCard = ({
         <Button 
           variant="outline" 
           className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-bounce"
+          onClick={() => navigate(`/animal/${id}`)}
         >
           Ver Perfil
         </Button>
         <Button 
           className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground transition-bounce"
+          onClick={() => navigate(`/adopt/${id}`)}
         >
           <Heart className="h-4 w-4 mr-2" />
           Adotar
