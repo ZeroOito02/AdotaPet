@@ -78,13 +78,6 @@ const AnimalCard = ({
         >
           Ver Perfil
         </Button>
-        <Button 
-          className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground transition-bounce"
-          onClick={() => navigate(`/adopt/${id}`)}
-        >
-          <Heart className="h-4 w-4 mr-2" />
-          Adotar
-        </Button>
       </CardFooter>
     </Card>
   );

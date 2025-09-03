@@ -12,16 +12,16 @@ const Header = () => {
           </div>
           
           <nav className="hidden md:flex items-center space-x-6">
-            <a href="#" className="text-foreground hover:text-primary transition-colors">
+            <a href="/" className="text-foreground hover:text-primary transition-colors">
               Início
             </a>
-            <a href="#animais" className="text-foreground hover:text-primary transition-colors">
+            <a href="/" className="text-foreground hover:text-primary transition-colors">
               Animais
             </a>
-            <a href="#sobre" className="text-foreground hover:text-primary transition-colors">
+            <a href="/" className="text-foreground hover:text-primary transition-colors">
               Sobre
             </a>
-            <a href="#contato" className="text-foreground hover:text-primary transition-colors">
+            <a href="/" className="text-foreground hover:text-primary transition-colors">
               Contato
             </a>
           </nav>
@@ -30,9 +30,6 @@ const Header = () => {
             <Button variant="outline" size="sm" className="hidden sm:flex">
               <Search className="h-4 w-4 mr-2" />
               Buscar
-            </Button>
-            <Button variant="default" size="sm" className="hidden sm:flex">
-              Adotar
             </Button>
             <Button variant="ghost" size="sm" className="md:hidden">
               <Menu className="h-5 w-5" />

@@ -130,13 +130,6 @@ const AnimalProfile = () => {
               </div>
               
               <div className="space-y-4">
-                <Button 
-                  size="lg" 
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-hero transition-bounce"
-                >
-                  <Heart className="h-5 w-5 mr-2" />
-                  Quero Adotar {animal.name}
-                </Button>
                 
                 <Card className="shadow-card">
                   <CardContent className="p-4">
