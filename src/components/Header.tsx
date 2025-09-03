@@ -1,4 +1,4 @@
-import { Heart, Search, Menu } from "lucide-react";
+import { Heart, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
@@ -20,10 +20,6 @@ const Header = () => {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  };
-
-  const handleSearch = () => {
-    scrollToSection('animais');
   };
 
   return (
@@ -63,10 +59,6 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center space-x-4">
-            <Button variant="outline" size="sm" className="hidden sm:flex" onClick={handleSearch}>
-              <Search className="h-4 w-4 mr-2" />
-              Buscar
-            </Button>
             <Button variant="ghost" size="sm" className="md:hidden">
               <Menu className="h-5 w-5" />
             </Button>
