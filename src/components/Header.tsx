@@ -1,7 +1,31 @@
 import { Heart, Search, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const scrollToSection = (sectionId: string) => {
+    if (window.location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  const handleSearch = () => {
+    scrollToSection('animais');
+  };
+
   return (
     <header className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
@@ -12,22 +36,34 @@ const Header = () => {
           </div>
           
           <nav className="hidden md:flex items-center space-x-6">
-            <a href="/" className="text-foreground hover:text-primary transition-colors">
+            <button 
+              onClick={() => navigate('/')} 
+              className="text-foreground hover:text-primary transition-colors"
+            >
               Início
-            </a>
-            <a href="/" className="text-foreground hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('animais')} 
+              className="text-foreground hover:text-primary transition-colors"
+            >
               Animais
-            </a>
-            <a href="/" className="text-foreground hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('sobre')} 
+              className="text-foreground hover:text-primary transition-colors"
+            >
               Sobre
-            </a>
-            <a href="/" className="text-foreground hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('contato')} 
+              className="text-foreground hover:text-primary transition-colors"
+            >
               Contato
-            </a>
+            </button>
           </nav>
 
           <div className="flex items-center space-x-4">
-            <Button variant="outline" size="sm" className="hidden sm:flex">
+            <Button variant="outline" size="sm" className="hidden sm:flex" onClick={handleSearch}>
               <Search className="h-4 w-4 mr-2" />
               Buscar
             </Button>
