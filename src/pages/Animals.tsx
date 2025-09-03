@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -11,18 +12,33 @@ import AnimalCard from "@/components/AnimalCard";
 import { mockAnimals } from "@/data/mockAnimals";
 
 const Animals = () => {
+  const [searchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
   const [speciesFilter, setSpeciesFilter] = useState("all");
   const [sizeFilter, setSizeFilter] = useState("all");
   const [ageFilter, setAgeFilter] = useState("all");
   const [locationFilter, setLocationFilter] = useState("all");
+  
+  // Apply URL search parameters on component mount
+  useEffect(() => {
+    const estado = searchParams.get('estado');
+    const cidade = searchParams.get('cidade');
+    
+    if (estado) {
+      setLocationFilter(estado);
+    }
+    if (cidade) {
+      setSearchTerm(cidade);
+    }
+  }, [searchParams]);
 
   const filteredAnimals = mockAnimals.filter(animal => {
     const matchesSearch = animal.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         animal.breed.toLowerCase().includes(searchTerm.toLowerCase());
+                         animal.breed.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         animal.location.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesSpecies = speciesFilter === "all" || animal.species === speciesFilter;
     const matchesSize = sizeFilter === "all" || animal.size === sizeFilter;
-    const matchesLocation = locationFilter === "all" || animal.location.includes(locationFilter);
+    const matchesLocation = locationFilter === "all" || animal.location.toLowerCase().includes(locationFilter.toLowerCase());
     
     return matchesSearch && matchesSpecies && matchesSize && matchesLocation;
   });

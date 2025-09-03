@@ -1,10 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Heart, Search } from "lucide-react";
 import heroImage from "@/assets/hero-pets.jpg";
+import SearchModal from "./SearchModal";
 
 const HeroSection = () => {
-  const navigate = useNavigate();
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
   return (
     <section className="relative min-h-[600px] bg-gradient-hero flex items-center overflow-hidden">
@@ -34,20 +35,12 @@ const HeroSection = () => {
             por uma família que os ame. Encontre seu companheiro perfeito hoje.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-hero transition-bounce"
-              onClick={() => navigate("/animals")}
-            >
-              <Heart className="h-5 w-5 mr-2" />
-              Ver Animais Disponíveis
-            </Button>
+          <div className="flex justify-center">
             <Button 
               variant="outline" 
               size="lg"
               className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-bounce"
-              onClick={() => navigate("/animals")}
+              onClick={() => setIsSearchModalOpen(true)}
             >
               <Search className="h-5 w-5 mr-2" />
               Buscar por Região
@@ -70,6 +63,11 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+      
+      <SearchModal 
+        isOpen={isSearchModalOpen} 
+        onClose={() => setIsSearchModalOpen(false)} 
+      />
     </section>
   );
 };
