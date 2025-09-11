@@ -41,7 +41,7 @@ const Footer = () => {
       {/* Footer com seção de contato */}
       <footer id="contato" className="bg-foreground text-background py-12">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-6">
               <Heart className="h-8 w-8 text-primary fill-primary" />
@@ -64,16 +64,6 @@ const Footer = () => {
               <li><a href="#animais" className="text-background/80 hover:text-primary transition-colors">Animais</a></li>
               <li><a href="#sobre" className="text-background/80 hover:text-primary transition-colors">Sobre Nós</a></li>
               <li><a href="#contato" className="text-background/80 hover:text-primary transition-colors">Contato</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-lg font-semibold mb-6">Como Ajudar</h4>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-background/80 hover:text-primary transition-colors">Adotar um Animal</a></li>
-              <li><a href="#" className="text-background/80 hover:text-primary transition-colors">Ser Voluntário</a></li>
-              <li><a href="#" className="text-background/80 hover:text-primary transition-colors">Fazer Doação</a></li>
-              <li><a href="#" className="text-background/80 hover:text-primary transition-colors">Apadrinhar</a></li>
             </ul>
           </div>
           
