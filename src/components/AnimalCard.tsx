@@ -47,14 +47,14 @@ const AnimalCard = ({
       <CardContent className="p-6">
         <div className="flex items-start justify-between mb-3">
           <div>
-            <h3 className="text-xl font-bold text-foreground mb-1">{name}</h3>
-            <p className="text-muted-foreground text-sm">
+            <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1">{name}</h3>
+            <p className="text-muted-foreground text-xs sm:text-sm">
               {breed} • {gender} • {size}
             </p>
           </div>
         </div>
         
-        <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
+        <div className="flex items-center gap-3 sm:gap-4 mb-4 text-xs sm:text-sm text-muted-foreground">
           <div className="flex items-center gap-1">
             <Calendar className="h-4 w-4" />
             <span>{age}</span>
@@ -65,7 +65,7 @@ const AnimalCard = ({
           </div>
         </div>
         
-        <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
+        <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3">
           {description}
         </p>
       </CardContent>

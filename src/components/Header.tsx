@@ -1,9 +1,12 @@
-import { Heart, Menu } from "lucide-react";
+import { Heart, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
     if (window.location.pathname !== '/') {
@@ -59,9 +62,59 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="sm" className="md:hidden">
-              <Menu className="h-5 w-5" />
-            </Button>
+            <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="sm" className="md:hidden">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[280px] sm:w-[350px]">
+                <div className="flex flex-col space-y-6 mt-6">
+                  <div className="flex items-center space-x-2 mb-4">
+                    <Heart className="h-6 w-6 text-primary fill-primary" />
+                    <h2 className="text-xl font-bold text-foreground">AdotaPet</h2>
+                  </div>
+                  
+                  <nav className="flex flex-col space-y-4">
+                    <SheetClose asChild>
+                      <button 
+                        onClick={() => navigate('/')} 
+                        className="flex items-center space-x-3 text-left text-foreground hover:text-primary transition-colors py-3 px-2 rounded-lg hover:bg-muted"
+                      >
+                        <span className="text-lg">Início</span>
+                      </button>
+                    </SheetClose>
+                    
+                    <SheetClose asChild>
+                      <button 
+                        onClick={() => scrollToSection('animais')} 
+                        className="flex items-center space-x-3 text-left text-foreground hover:text-primary transition-colors py-3 px-2 rounded-lg hover:bg-muted"
+                      >
+                        <span className="text-lg">Animais</span>
+                      </button>
+                    </SheetClose>
+                    
+                    <SheetClose asChild>
+                      <button 
+                        onClick={() => scrollToSection('sobre')} 
+                        className="flex items-center space-x-3 text-left text-foreground hover:text-primary transition-colors py-3 px-2 rounded-lg hover:bg-muted"
+                      >
+                        <span className="text-lg">Sobre</span>
+                      </button>
+                    </SheetClose>
+                    
+                    <SheetClose asChild>
+                      <button 
+                        onClick={() => scrollToSection('contato')} 
+                        className="flex items-center space-x-3 text-left text-foreground hover:text-primary transition-colors py-3 px-2 rounded-lg hover:bg-muted"
+                      >
+                        <span className="text-lg">Contato</span>
+                      </button>
+                    </SheetClose>
+                  </nav>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>

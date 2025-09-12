@@ -53,11 +53,11 @@ const Animals = () => {
       
       <main className="py-8">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-foreground mb-4">
+            <div className="text-center mb-8">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
               Animais Disponíveis para <span className="text-primary">Adoção</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
               Encontre seu novo melhor amigo entre nossos {mockAnimals.length} animais disponíveis
             </p>
           </div>
@@ -70,7 +70,7 @@ const Animals = () => {
                 <h3 className="text-lg font-semibold">Filtros de Busca</h3>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                 <div className="relative">
                   <Input
                     placeholder="Buscar por nome ou raça..."

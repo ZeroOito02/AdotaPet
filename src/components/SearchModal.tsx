@@ -37,7 +37,7 @@ const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md mx-4 sm:mx-auto max-w-[95vw] sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <MapPin className="h-5 w-5 text-primary" />
@@ -68,10 +68,10 @@ const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
             />
           </div>
           
-          <div className="flex gap-2 pt-4">
+          <div className="flex flex-col sm:flex-row gap-2 pt-4">
             <Button 
               onClick={handleSearch}
-              className="flex-1"
+              className="flex-1 w-full sm:w-auto"
               disabled={!state.trim() && !city.trim()}
             >
               <Search className="h-4 w-4 mr-2" />
@@ -80,6 +80,7 @@ const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
             <Button 
               variant="outline" 
               onClick={onClose}
+              className="w-full sm:w-auto"
             >
               Cancelar
             </Button>
