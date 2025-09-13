@@ -12,12 +12,22 @@ const AnimalProfile = () => {
   const navigate = useNavigate();
   const animal = getAnimalById(id || "");
 
+  const handleBackToAnimals = () => {
+    navigate('/');
+    setTimeout(() => {
+      const element = document.getElementById('animais');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   if (!animal) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-foreground mb-4">Animal não encontrado</h1>
-          <Button onClick={() => navigate("/animals")}>
+          <Button onClick={handleBackToAnimals}>
             <ArrowLeft className="h-4 w-4 mr-2" />
             Voltar para animais
           </Button>
@@ -32,7 +42,7 @@ const AnimalProfile = () => {
       
       <main className="py-8">
         <div className="container mx-auto px-4">
-          <Button variant="ghost" className="mb-6">
+          <Button variant="ghost" className="mb-6" onClick={handleBackToAnimals}>
             <ArrowLeft className="h-4 w-4 mr-2" />
             Voltar para animais
           </Button>
