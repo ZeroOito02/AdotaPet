@@ -8,6 +8,17 @@ const Header = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToTop = () => {
+    if (window.location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const scrollToSection = (sectionId: string) => {
     if (window.location.pathname !== '/') {
       navigate('/');
@@ -36,7 +47,7 @@ const Header = () => {
           
           <nav className="hidden md:flex items-center space-x-6">
             <button 
-              onClick={() => navigate('/')} 
+              onClick={scrollToTop} 
               className="text-foreground hover:text-primary transition-colors"
             >
               Início
@@ -78,7 +89,7 @@ const Header = () => {
                   <nav className="flex flex-col space-y-4">
                     <SheetClose asChild>
                       <button 
-                        onClick={() => navigate('/')} 
+                        onClick={scrollToTop} 
                         className="flex items-center space-x-3 text-left text-foreground hover:text-primary transition-colors py-3 px-2 rounded-lg hover:bg-muted"
                       >
                         <span className="text-lg">Início</span>
