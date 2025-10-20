@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Heart, MapPin, Calendar } from "lucide-react";
 import type { Animal } from "@/data/mockAnimals";
+import { useFavorites } from "@/hooks/useFavorites";
 
 interface AnimalCardProps extends Omit<Animal, 'weight' | 'vaccinated' | 'neutered' | 'microchipped' | 'goodWithKids' | 'goodWithPets' | 'energyLevel' | 'shelterName' | 'shelterContact' | 'shelterEmail' | 'history' | 'personality' | 'specialNeeds' | 'dateAdded' | 'featured'> {}
 
@@ -20,6 +21,9 @@ const AnimalCard = ({
   size 
 }: AnimalCardProps) => {
   const navigate = useNavigate();
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const favorite = isFavorite(id);
+
   return (
     <Card className="group overflow-hidden shadow-card hover:shadow-hero transition-all duration-300 hover:-translate-y-2 bg-card border-border">
       <div className="relative overflow-hidden">
@@ -38,8 +42,14 @@ const AnimalCard = ({
             variant="ghost" 
             size="sm" 
             className="bg-background/80 hover:bg-background text-foreground p-2 rounded-full backdrop-blur-sm"
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleFavorite(id);
+            }}
           >
-            <Heart className="h-4 w-4" />
+            <Heart 
+              className={`h-4 w-4 transition-colors ${favorite ? 'fill-red-500 text-red-500' : ''}`} 
+            />
           </Button>
         </div>
       </div>
