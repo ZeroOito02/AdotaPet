@@ -13,6 +13,7 @@ const HeroSection = () => {
         <img 
           src={heroImage} 
           alt="Animais felizes esperando adoção" 
+          title="Animais felizes esperando adoção"   {/* Melhoria 1: acessibilidade */}
           className="w-full h-full object-cover opacity-20"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-secondary-soft/60"></div>
@@ -48,15 +49,16 @@ const HeroSection = () => {
           </div>
           
           <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 max-w-md sm:max-w-none mx-auto">
-            <div className="text-center">
+            {/* Melhoria 2: animação suave nas estatísticas */}
+            <div className="text-center transition-all duration-300 hover:scale-105">
               <div className="text-2xl sm:text-3xl font-bold text-primary">500+</div>
               <div className="text-muted-foreground text-sm">Animais Resgatados</div>
             </div>
-            <div className="text-center">
+            <div className="text-center transition-all duration-300 hover:scale-105">
               <div className="text-2xl sm:text-3xl font-bold text-primary">1200+</div>
               <div className="text-muted-foreground text-sm">Adoções Realizadas</div>
             </div>
-            <div className="text-center">
+            <div className="text-center transition-all duration-300 hover:scale-105">
               <div className="text-2xl sm:text-3xl font-bold text-primary">50+</div>
               <div className="text-muted-foreground text-sm">Parceiros</div>
             </div>
